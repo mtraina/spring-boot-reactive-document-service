@@ -1,0 +1,10 @@
+wrk -t3 -c100 -d5s http://127.0.0.1:8080/
+
+Running 5s test @ http://127.0.0.1:8080/
+  3 threads and 100 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     7.15ms   10.64ms 117.35ms   90.75%
+    Req/Sec     7.23k     1.49k   14.29k    82.67%
+  108314 requests in 5.04s, 10.64MB read
+Requests/sec:  21502.06
+Transfer/sec:      2.11MB
