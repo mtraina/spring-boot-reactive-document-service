@@ -1,10 +1,48 @@
-wrk -t3 -c100 -d5s http://127.0.0.1:8080/
+// undertow sync
+
+wrk -t3 -c3 -d5s http://127.0.0.1:8080/
+Running 5s test @ http://127.0.0.1:8080/
+  3 threads and 3 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    12.30ms    3.37ms  49.78ms   97.72%
+    Req/Sec    82.69      8.58    90.00     92.00%
+  1251 requests in 5.06s, 125.83KB read
+Requests/sec:    247.19
+Transfer/sec:     24.86KB
+
+// undertow async
+wrk -t3 -c3 -d5s http://127.0.0.1:8080/async
+
+Running 5s test @ http://127.0.0.1:8080/async
+  3 threads and 3 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   578.52us    2.67ms  40.98ms   97.53%
+    Req/Sec     4.88k   694.03     5.77k    70.67%
+  72970 requests in 5.02s, 7.59MB read
+Requests/sec:  14542.89
+Transfer/sec:      1.51MB
+_____________________________________________________
+
+// tomcat sync
+wrk -t3 -c3 -d5s http://127.0.0.1:8080/
 
 Running 5s test @ http://127.0.0.1:8080/
-  3 threads and 100 connections
+  3 threads and 3 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     7.15ms   10.64ms 117.35ms   90.75%
-    Req/Sec     7.23k     1.49k   14.29k    82.67%
-  108314 requests in 5.04s, 10.64MB read
-Requests/sec:  21502.06
-Transfer/sec:      2.11MB
+    Latency    12.55ms    3.77ms  50.42ms   96.88%
+    Req/Sec    81.25      9.87    90.00     88.67%
+  1225 requests in 5.05s, 123.22KB read
+Requests/sec:    242.73
+Transfer/sec:     24.42KB
+
+// tomcat async
+wrk -t3 -c3 -d5s http://127.0.0.1:8080/async
+
+Running 5s test @ http://127.0.0.1:8080/async
+  3 threads and 3 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     3.04ms   13.99ms 183.02ms   95.70%
+    Req/Sec     3.89k     1.51k    5.74k    63.33%
+  58227 requests in 5.10s, 6.05MB read
+Requests/sec:  11410.05
+Transfer/sec:      1.19MB
