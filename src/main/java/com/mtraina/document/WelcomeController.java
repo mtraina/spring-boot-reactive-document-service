@@ -11,7 +11,8 @@ public class WelcomeController {
     private static final Logger logger = LoggerFactory.getLogger(WelcomeController.class);
 
     @GetMapping("/")
-    public String welcome(){
+    public String welcome() throws InterruptedException {
+        Thread.sleep(10);
         //logger.info("called");
         return "hello!";
     }

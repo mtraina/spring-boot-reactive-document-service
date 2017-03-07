@@ -29,9 +29,13 @@ repositories {
 	maven { url "https://repo.spring.io/milestone" }
 }
 
+configurations {
+	compile.exclude module: "spring-boot-starter-tomcat"
+}
 
 dependencies {
 	//compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
+	compile("org.springframework.boot:spring-boot-starter-undertow")
 	compile('org.springframework.boot:spring-boot-starter-webflux')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
